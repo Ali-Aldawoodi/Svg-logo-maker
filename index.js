@@ -29,17 +29,21 @@ const inquirer = require('inquirer')
 
 // I need to create a logo function that within it contains code to use as data down below. What do i put into the function? It has to contain all of the data from the user input right? 
 
-const circle = '<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="75" r="20"/>' 
-const triangle ='<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><polygon points="225,10 100,210 350,210"/>' 
-const square = '<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100"/>'
-  
 
 function logo({ letters, letterColors, shape, color }) {
-    
-  const choiceIndex = [`${shape} fill = ${color} /> <text x="150" y="125" font-size="60" fill = ${letterColors}>${letters}</text></svg>`, `${shape} fill = ${color} /> <text x="150" y="125" font-size="60" fill = ${letterColors}/> ${letters}</text></svg>`, `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100" fill = ${color} /> <text x="150" y="125" font-size="60" fill = ${letterColors}/> ${letters}</text></svg>`]
-   
-   
+    // if user selects circle return circle. 
+    if (shape ==='circle') {
+        return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="75" r="20" fill = "${color}"/> <text x="150" y="125" font-size="60" fill = "${letterColors}">${letters}</text></svg>`
+    }
 
+    if (shape === 'triangle') {
+        return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><polygon points="225,10 100,210 350,210" fill = "${color}" /> <text x="150" y="125" font-size="60" fill = "${letterColors}"/> ${letters}</text></svg>`
+    }
+
+    if (shape === 'square') {
+        return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100" fill = "${color}" /> <text x="150" y="125" font-size="60" fill = "${letterColors}"/> ${letters}</text></svg>`
+    }
+ 
 
 };
 
@@ -79,7 +83,7 @@ function init() {
             console.log(response)
             const data = logo(response)
 
-
+            console.log(data)
             writeToFile('logo.svg', data, (err) =>
                 err ? console.log(err) : console.log('Generated logo.svg'))
         })
