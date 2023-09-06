@@ -29,7 +29,7 @@ const inquirer = require('inquirer')
 
 // I need to create a logo function that within it contains code to use as data down below. What do i put into the function? It has to contain all of the data from the user input right? 
 
-
+// Use this function to create into an object with classes. Still keep conditionals but start using classes after
 function logo({ letters, letterColors, shape, color }) {
     // if user selects circle return circle. 
     if (shape ==='circle') {
@@ -94,11 +94,3 @@ init();
 
 
 
-
-
-
-
-
-// const circle = `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="75" r="20" fill = ${color} /> </svg>`
-//     const triangle = `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><polygon points="225,10 100,210 350,210" fill = ${color} /></svg>`
-//     const square = `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100" fill = ${color} /></svg>`
