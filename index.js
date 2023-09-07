@@ -23,7 +23,7 @@
 // WHEN I open the `logo.svg` file in a browser
 // THEN I am shown a 300x200 pixel image that matches the criteria I entered
 
-const Shapes = require('./lib/shapes.js')
+const {Circle, Triangle, Square} = require('./lib/shapes.js')
 const fs = require('fs')
 const inquirer = require('inquirer')
 
@@ -32,19 +32,25 @@ const inquirer = require('inquirer')
 // Use this function to create into an object with classes. Still keep conditionals but start using classes after
 function logo({ letters, letterColors, shape, color }) {
     // if user selects circle return circle. 
+    let shapeObject 
     if (shape ==='circle') {
-        return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="25" cy="75" r="20" fill = "${color}"/> <text x="150" y="125" font-size="60" fill = "${letterColors}">${letters}</text></svg>`
+        shapeObject = new Circle()
     }
 
     if (shape === 'triangle') {
-        return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><polygon points="225,10 100,210 350,210" fill = "${color}" /> <text x="150" y="125" font-size="60" fill = "${letterColors}"/> ${letters}</text></svg>`
+        shapeObject = new Triangle()
     }
 
     if (shape === 'square') {
-        return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="100" fill = "${color}" /> <text x="150" y="125" font-size="60" fill = "${letterColors}"/> ${letters}</text></svg>`
+        shapeObject = new Square()
     }
+    shapeObject.setColor(color)
+    shapeObject.setLetterColors(letterColors)
+    shapeObject.setLetters(letters)
+    console.log(shapeObject)
+    return `<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">${shapeObject.render()}<text x="50%" y="50%" text-anchor="middle" font-size="10" fill = "${shapeObject.letterColors}">${shapeObject.letters}</text></svg>`
  
-
+    
 };
 
 const questions = [
