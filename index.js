@@ -79,7 +79,7 @@ const questions = [
 
 function writeToFile(filename, data) {
     fs.writeFile(filename, data, (err) =>
-        err ? console.log(err) : console.log('Check out your logo!'))
+        err ? console.log(err) : console.log('Generated logo.svg'))
 };
 
 function init() {
