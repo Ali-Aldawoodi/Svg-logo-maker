@@ -23,7 +23,7 @@
 // WHEN I open the `logo.svg` file in a browser
 // THEN I am shown a 300x200 pixel image that matches the criteria I entered
 
-const {Circle, Triangle, Square} = require('./lib/shapes.js')
+const {Circle, Triangle, Square} = require('./shapes.js')
 const fs = require('fs')
 const inquirer = require('inquirer')
 
